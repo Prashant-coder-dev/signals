@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignalPro | Advanced Trading Signal Detector</title>
+    <link rel="stylesheet" href="/static/index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">SignalPro</div>
+        <div class="server-status">
+          <span class="status-dot"></span>
+          <span id="status-text">Live Scanner</span>
+        </div>
+      </header>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Signals Today</div>
+          <div class="stat-value" id="total-signals">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Top Aggressive Symbol</div>
+          <div class="stat-value" id="top-symbol">-</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Last Refresh</div>
+          <div class="stat-value" id="last-refresh">Never</div>
+        </div>
+      </div>
+
+      <div class="chart-section stat-card" style="margin-bottom: 2rem">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+          "
+        >
+          <h2 style="font-size: 1.25rem">Signal Analysis Chart</h2>
+          <div
+            id="selected-symbol-display"
+            style="color: var(--accent-color); font-weight: 700"
+          >
+            Select a symbol from table
+          </div>
+        </div>
+        <div
+          class="chart-container"
+          style="position: relative; height: 350px; width: 100%"
+        >
+          <canvas id="signalChart"></canvas>
+        </div>
+      </div>
+
+      <div class="signal-table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Date</th>
+              <th>Latest Close</th>
+              <th>Volume</th>
+              <th>Detected Signals</th>
+            </tr>
+          </thead>
+          <tbody id="signal-body">
+            <!-- Data will be loaded here -->
+            <tr>
+              <td
+                colspan="5"
+                style="
+                  text-align: center;
+                  color: var(--text-secondary);
+                  padding: 50px;
+                "
+              >
+                Initializing scanner...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+  </body>
+</html>
