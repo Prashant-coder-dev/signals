@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 import requests
 import io
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates', static_folder='static')
 CORS(app)
 
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1MLUHCUmui1N9LHU28uINTOP0HEu6prQX776Tk4hxgaY/export?format=csv"
@@ -89,6 +89,10 @@ def detect_signals_history(sdf):
         })
             
     return all_signals
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/api/signals')
 def get_latest_signals():
